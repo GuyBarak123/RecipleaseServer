@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipleaseServer", "RecipleaseServer\RecipleaseServer.csproj", "{B5B894C8-0483-4076-9ACF-985E35FF36D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipleaseServerBL", "RecipleaseServerBL\RecipleaseServerBL.csproj", "{F06F43D9-0B1F-4FE3-9C4E-121B9FCAC7CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5B894C8-0483-4076-9ACF-985E35FF36D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B894C8-0483-4076-9ACF-985E35FF36D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B894C8-0483-4076-9ACF-985E35FF36D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B894C8-0483-4076-9ACF-985E35FF36D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06F43D9-0B1F-4FE3-9C4E-121B9FCAC7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06F43D9-0B1F-4FE3-9C4E-121B9FCAC7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06F43D9-0B1F-4FE3-9C4E-121B9FCAC7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06F43D9-0B1F-4FE3-9C4E-121B9FCAC7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D435A1D9-1D30-4317-B492-76363057A31C}
+	EndGlobalSection
+EndGlobal
