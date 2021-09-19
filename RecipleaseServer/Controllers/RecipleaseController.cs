@@ -18,5 +18,12 @@ namespace RecipleaseServer.Controllers
         {
             this.context = context;
         }
+
+        [Route("Test")]
+        [HttpGet]
+        public string Test()
+        {
+            return "My Name is Guy!";
+        }
     }
 }
