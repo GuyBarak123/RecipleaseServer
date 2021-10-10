@@ -1,21 +1,109 @@
-﻿Use master
-Create Database RecipleaseDB
+--drop DATABASE Reciplease
+--go
+
+CREATE DATABASE Reciplease
+go
+
+USE Reciplease
 Go
 
-Use RecipleaseDB
-Go
+CREATE TABLE Ingridients(
+IngridientID INT IDENTITY (1,1) PRIMARY KEY,
+IngridientName NVARCHAR
+);
+
+CREATE TABLE Tags(
+TagID INT IDENTITY (1,1) PRIMARY KEY,
+TAGNAME NVARCHAR
+);
+
+CREATE TABLE Gender(
+GenderID INT IDENTITY (1,1) PRIMARY KEY,
+GenderName NVARCHAR
+);
+
+CREATE TABLE Measurement(
+MeasurementID INT IDENTITY (1,1) PRIMARY KEY,
+MeasurementName NVARCHAR
+);
 
 
-Create Table Users (
-ID int Identity primary key,
-Email nvarchar(100) not null,
-FirstName nvarchar(30) not null,
-LastName nvarchar(30) not null,
-UserPswd nvarchar(30) not null,
-CONSTRAINT UC_Email UNIQUE(Email)
-)
+CREATE TABLE Users (
+UserID INT IDENTITY (1,1) PRIMARY KEY,
+Name NVARCHAR (8) NOT NULL,
+Password NVARCHAR (10) NOT NULL,
+Email NVARCHAR(20) NOT NULL,
+GenderID INT 
+CONSTRAINT FK_GenderID FOREIGN KEY (GenderID)
+REFERENCES Gender(GenderID),
+TagID INT,
+CONSTRAINT FK_User_TagID FOREIGN KEY (TagID)
+REFERENCES Tags(TagID),
+);
 
-Go
+CREATE TABLE Recipe(
+RecipeID INT IDENTITY (1,1) PRIMARY KEY,
+UserID INT,
+CONSTRAINT FK_UserID FOREIGN KEY (UserID)
+REFERENCES Users(UserID),
+Title NVARCHAR (30) NOT NULL,
+RecipeDescription NVARCHAR NOT NULL,
+Instructions NVARCHAR NOT NULL,
+TagID INT,
+CONSTRAINT FK_Recipe_TagID FOREIGN KEY (TagID)
+REFERENCES Tags(TagID),
+DateOfUpload DATETIME,
+);
 
-INSERT INTO Users VALUES ('kuku@kuku.com','kuku','kaka','1234');
-GO
+CREATE TABLE Comment(
+CommentID INT IDENTITY (1,1) PRIMARY KEY,
+Content NVARCHAR NOT NULL,
+RecipeID INT ,
+CONSTRAINT FK_Comment_RecipeID FOREIGN KEY (RecipeID)
+REFERENCES Recipe(RecipeID)
+);
+
+CREATE TABLE Follow(
+FollowID INT IDENTITY (1,1) NOT NULL,
+UserID INT,
+CONSTRAINT FK_Follow_UserID FOREIGN KEY (UserID)
+REFERENCES Users(UserID),
+);
+
+CREATE TABLE Likes(
+LikesID INT IDENTITY (1,1) PRIMARY KEY,
+RecipeID INT ,
+CONSTRAINT FK_Likes_RecipeID FOREIGN KEY (RecipeID)
+REFERENCES Recipe(RecipeID),
+UserID INT,
+CONSTRAINT FK_Likes_UserID FOREIGN KEY (UserID)
+REFERENCES Users(UserID),
+);
+
+CREATE TABLE RecipeIng(
+RecipeIngID INT IDENTITY (1,1) PRIMARY KEY,
+RecipeID INT ,
+CONSTRAINT FK_RecipeID FOREIGN KEY (RecipeID)
+REFERENCES Recipe(RecipeID),
+IngridientID INT ,
+CONSTRAINT FK_IngridientID FOREIGN KEY (IngridientID)
+REFERENCES Ingridients(IngridientID),
+Amount FLOAT NOT NULL,
+MeasurementID INT,
+CONSTRAINT FK_MeasurementID FOREIGN KEY (MeasurementID)
+REFERENCES Measurement (MeasurementID)
+);
+
+CREATE TABLE Saved(
+RecipeID INT ,
+CONSTRAINT FK_Saved_RecipeID FOREIGN KEY (RecipeID)
+REFERENCES Recipe(RecipeID),
+UserID INT,
+CONSTRAINT FK_Saved_UserID FOREIGN KEY (UserID)
+REFERENCES Users(UserID),
+);
+
+Alter table Users
+ADD IsAdmin bit NOT NULL default(0) 
+
+
