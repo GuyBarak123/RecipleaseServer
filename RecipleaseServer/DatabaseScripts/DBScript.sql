@@ -1,4 +1,4 @@
---drop DATABASE Reciplease
+--CREATE DATABASE Reciplease
 --go
 
 CREATE DATABASE Reciplease
@@ -33,7 +33,7 @@ UserID INT IDENTITY (1,1) PRIMARY KEY,
 Name NVARCHAR (100) NOT NULL,
 Password NVARCHAR (100) NOT NULL,
 Email NVARCHAR(255) NOT NULL,
-GenderID INT 
+GenderID INT
 CONSTRAINT FK_GenderID FOREIGN KEY (GenderID)
 REFERENCES Gender(GenderID),
 TagID INT,
@@ -104,10 +104,10 @@ REFERENCES Users(UserID),
 );
 
 Alter table Users
-ADD IsAdmin bit NOT NULL default(0) 
+ADD IsAdmin bit NOT NULL default(0)
 
 USE Reciplease
-go 
+go
 
 INSERT INTO Ingridients ( IngridientName)
 VALUES ('All Purpose Flour')
@@ -249,7 +249,41 @@ INSERT INTO Ingridients ( IngridientName)
 VALUES ('Ginger')
 
 
+INSERT INTO Gender(GenderName)
+VALUES('Female')
+INSERT INTO Gender(GenderName)
+VALUES('Male')
+INSERT INTO Gender(GenderName)
+VALUES('Other')
+
+INSERT INTO Tags(TagName)
+VALUES ('Baked')
+INSERT INTO Tags(TagName)
+VALUES ('Cookies')
+INSERT INTO Tags(TagName)
+VALUES ('Birthday')
+INSERT INTO Tags(TagName)
+VALUES ('Cakes')
+INSERT INTO Tags(TagName)
+VALUES ('Fast Recipes')
+INSERT INTO Tags(TagName)
+VALUES ('No Bake')
+INSERT INTO Tags(TagName)
+VALUES ('Pies')
+INSERT INTO Tags(TagName)
+VALUES ('Frozen Desserts')
+INSERT INTO Tags(TagName)
+VALUES ('Gluten Free')
+INSERT INTO Tags(TagName)
+VALUES ('Frosting')
+INSERT INTO Tags(TagName)
+VALUES ('low Fat')
+INSERT INTO Tags(TagName)
+VALUES ('Tarts')
+INSERT INTO Tags(TagName)
+VALUES ('Vegan')
 
 
-
+INSERT INTO Users(Name, Password, Email, GenderID, TagID)
+Values('Guy', 'G123', 'guy@gmail.com',1,2 )
 
