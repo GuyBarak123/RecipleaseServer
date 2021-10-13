@@ -48,7 +48,7 @@ namespace RecipleaseServer.Controllers
         }
 
         [Route("SignUp")]
-        [HttpGet]
+        [HttpPost]
         public User SignUp([FromBody] User user)
         {
             User user = context.SignUp(Name, Password, Email, Gender, Tag, IsAdmin)
