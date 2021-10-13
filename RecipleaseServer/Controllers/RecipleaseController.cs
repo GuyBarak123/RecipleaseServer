@@ -47,16 +47,16 @@ namespace RecipleaseServer.Controllers
 
         }
 
-        //[Route("SignUp")]
-        //[HttpGet]
-        //public User SignUp([FromQuery] string Name, [FromQuery] string Password, [FromQuery] string Email, Gender, Tag, Isadmin )
-        //{
-        //    User user = context.SignUp(Name, Password, Email, Gender, Tag, IsAdmin)
-        //      if (user != null)
-        //    {
+        [Route("SignUp")]
+        [HttpGet]
+        public User SignUp([FromBody] User user)
+        {
+            User user = context.SignUp(Name, Password, Email, Gender, Tag, IsAdmin)
+              if (user != null)
+            {
 
-        //    }
+            }
 
-        //}
+        }
     }
 }
