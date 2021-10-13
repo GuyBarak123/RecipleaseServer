@@ -25,5 +25,38 @@ namespace RecipleaseServer.Controllers
         {
             return "My Name is Guy!";
         }
+
+        [Route("Login")]
+        [HttpGet]
+        public User Login([FromQuery] string Name, [FromQuery] string Password)
+        {
+            User user = context.Login(Name, Password);
+
+            if (user != null)
+            {
+                HttpContext.Session.SetObject("TheUser", user);
+                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                return user;
+            }
+            else
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                return null;
+            }
+
+
+        }
+
+        //[Route("SignUp")]
+        //[HttpGet]
+        //public User SignUp([FromQuery] string Name, [FromQuery] string Password, [FromQuery] string Email, Gender, Tag, Isadmin )
+        //{
+        //    User user = context.SignUp(Name, Password, Email, Gender, Tag, IsAdmin)
+        //      if (user != null)
+        //    {
+
+        //    }
+
+        //}
     }
 }
