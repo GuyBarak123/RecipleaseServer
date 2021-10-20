@@ -28,9 +28,9 @@ namespace RecipleaseServer.Controllers
 
         [Route("Login")]
         [HttpGet]
-        public User Login([FromQuery] string Name, [FromQuery] string Password)
+        public User Login([FromQuery] string email, [FromQuery] string password)
         {
-            User user = context.Login(Name, Password);
+            User user = context.Login(email, password);
 
             if (user != null)
             {
