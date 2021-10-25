@@ -51,11 +51,20 @@ namespace RecipleaseServer.Controllers
         [HttpPost]
         public User SignUp([FromBody] User user)
         {
-            User user = context.SignUp(Name, Password, Email, Gender, Tag, IsAdmin)
-              if (user != null)
+            try
             {
-
+                context.Users.Add(user);
+                context.SaveChanges();
+                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                return user;
             }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                return null;
+            }
+            
 
         }
     }

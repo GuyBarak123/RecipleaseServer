@@ -11,10 +11,10 @@ namespace RecipleaseServerBL.Models
     public partial class RecipleaseDBContext : DbContext
     {
 
-        public User Login(string Name, string Password)
+        public User Login(string Email, string Password)
         {
             User user = this.Users
-                .Where(u => u.Name == Name && u.Password == Password).FirstOrDefault();
+                .Where(u => u.Email == Email && u.Password == Password).FirstOrDefault();
             return user;
         }
 
