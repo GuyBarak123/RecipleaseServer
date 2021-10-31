@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace RecipleaseServerBL.Models
 {
-    public partial class RecipleaseDBContext : DbContext
+    public partial class RecipleaseContext : DbContext
     {
 
         public User Login(string Email, string Password)

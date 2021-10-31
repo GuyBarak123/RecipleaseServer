@@ -44,7 +44,7 @@ namespace RecipleaseServer
             #region Add DB Context Support
             string connectionString = this.Configuration.GetConnectionString("RecipleaseDB");
 
-            services.AddDbContext<RecipleaseDBContext>(options => options
+            services.AddDbContext<RecipleaseContext>(options => options
                                                                 .UseSqlServer(connectionString));
             //.UseLazyLoadingProxies());
             #endregion

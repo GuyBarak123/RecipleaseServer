@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RecipleaseServerBL.Models;
 using System.IO;
+using RecipleaseServer.DTO;
 
 namespace RecipleaseServer.Controllers
 {
@@ -13,8 +14,8 @@ namespace RecipleaseServer.Controllers
     [ApiController]
     public class RecipleaseController : ControllerBase
     {
-        RecipleaseDBContext context;
-        public RecipleaseController(RecipleaseDBContext context)
+        RecipleaseContext context;
+        public RecipleaseController(RecipleaseContext context)
         {
             this.context = context;
         }
@@ -24,6 +25,20 @@ namespace RecipleaseServer.Controllers
         public string Test()
         {
             return "My Name is Guy!";
+        }
+
+        [Route("GetLookups")]
+        [HttpGet]
+        public LookupTables GetLookups()
+        {
+            LookupTables obj = new LookupTables()
+            {
+                Genders = context.Genders.ToList(),
+                Tags = context.Tags.ToList(),
+                Ingridients = context.Ingridients.ToList()
+            };
+
+            return obj;
         }
 
         [Route("Login")]
