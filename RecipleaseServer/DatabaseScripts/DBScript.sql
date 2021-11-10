@@ -287,3 +287,4 @@ VALUES ('Vegan')
 INSERT INTO Users(Name, Password, Email, GenderID, TagID)
 Values('Guy', 'G123', 'guy@gmail.com',1,2 )
 
+SELECT * FROM USERS
