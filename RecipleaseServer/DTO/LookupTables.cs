@@ -11,5 +11,7 @@ namespace RecipleaseServer.DTO
         public List<Gender> Genders { get; set; }
         public List<Tag> Tags { get; set; }
         public List<Ingridient> Ingridients { get; set; }
+
+   
     }
 }

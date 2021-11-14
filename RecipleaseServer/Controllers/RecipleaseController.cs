@@ -35,7 +35,9 @@ namespace RecipleaseServer.Controllers
             {
                 Genders = context.Genders.ToList(),
                 Tags = context.Tags.ToList(),
-                Ingridients = context.Ingridients.ToList()
+                Ingridients = context.Ingridients.ToList(),
+              
+
             };
 
             return obj;
@@ -79,8 +81,12 @@ namespace RecipleaseServer.Controllers
                 Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
                 return null;
             }
+        }
+        [Route("Explore")]
+        [HttpGet]
+        public List<Recipe> Explore()
+        {
             
-
         }
     }
 }
