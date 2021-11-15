@@ -86,7 +86,8 @@ namespace RecipleaseServer.Controllers
         [HttpGet]
         public List<Recipe> Explore()
         {
-            
+            return context.Recipes.ToList(); 
         }
+
     }
 }
