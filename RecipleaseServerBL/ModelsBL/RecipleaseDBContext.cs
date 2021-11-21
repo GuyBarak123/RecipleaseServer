@@ -14,7 +14,10 @@ namespace RecipleaseServerBL.Models
         public User Login(string Email, string Password)
         {
             User user = this.Users
-                .Where(u => u.Email == Email && u.Password == Password).FirstOrDefault();
+                .Where(u => u.Email == Email && u.Password == Password)
+                .Include(u => u.Recipes)
+                .ThenInclude(r => r.RecipeIngs)
+                .FirstOrDefault();
             return user;
         }
 
