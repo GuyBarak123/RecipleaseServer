@@ -290,5 +290,9 @@ Values('Guy', 'G123', 'guy@gmail.com',1,2 )
 INSERT INTO  Recipe (UserID, Title, RecipeDescription, Instructions, TagID)
 Values(1, 'MY FIRST RECIPE', 'THIS RECIPE IS VERY EASY TO MAKE YOU WILL ENJOY IT!.', 'YOU ILL NEED FLOUR, EGGS, COCA POWDER AND MILK', 6)
 
+INSERT INTO  Recipe (UserID, Title, RecipeDescription, Instructions, TagID)
+Values(1, 'MY second RECIPE', 'cake recipe you will love it.', 'you need flour eggs baking powder sugar', 2)
+
+
 SELECT * FROM Recipe
 SELECT * FROM USERS
