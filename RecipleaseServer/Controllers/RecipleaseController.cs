@@ -89,5 +89,24 @@ namespace RecipleaseServer.Controllers
             return context.Recipes.ToList(); 
         }
 
+
+        [Route("NewPost")]
+        [HttpPost]
+        public Recipe NewPost([FromBody] Recipe recipe)
+        {
+            try
+            {
+                context.Recipes.Add(recipe);
+                context.SaveChanges();
+                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                return recipe;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                return null;
+            }
+        }
     }
 }
