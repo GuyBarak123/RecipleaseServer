@@ -107,6 +107,9 @@ namespace RecipleaseServer.Controllers
                 Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
                 return null;
             }
+            var pathFrom = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", "defaultphoto.jpg");
+            var pathTo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", $"{recipe.RecipeId}.jpg");
+            System.IO.File.Copy(pathFrom, pathTo);
         }
 
         [Route("UploadImage")]

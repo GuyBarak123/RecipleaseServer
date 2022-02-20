@@ -8,5 +8,6 @@ namespace RecipleaseServerBL.Models
 {
     public partial class Recipe
     {
+    
     }
 }

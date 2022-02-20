@@ -19,6 +19,7 @@ namespace RecipleaseServerBL.Models
         public string Title { get; set; }
         public string RecipeDescription { get; set; }
         public string Instructions { get; set; }
+  
         public int? TagId { get; set; }
         public DateTime? DateOfUpload { get; set; }
 
