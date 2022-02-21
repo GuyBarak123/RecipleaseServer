@@ -94,22 +94,31 @@ namespace RecipleaseServer.Controllers
         [HttpPost]
         public Recipe NewPost([FromBody] Recipe recipe)
         {
-            try
+            User user = HttpContext.Session.GetObject<User>("TheUser");
+            if (user != null)
             {
-                context.Recipes.Add(recipe);
-                context.SaveChanges();
-                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
-                return recipe;
+                try
+                {
+                    context.Recipes.Add(recipe);
+                    context.SaveChanges();
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                    return recipe;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                    return null;
+                }
+                var pathFrom = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", "defaultphoto.jpg");
+                var pathTo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", $"{recipe.RecipeId}.jpg");
+                System.IO.File.Copy(pathFrom, pathTo);
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.Message);
-                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
                 return null;
             }
-            var pathFrom = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", "defaultphoto.jpg");
-            var pathTo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", $"{recipe.RecipeId}.jpg");
-            System.IO.File.Copy(pathFrom, pathTo);
         }
 
         [Route("UploadImage")]
@@ -117,7 +126,7 @@ namespace RecipleaseServer.Controllers
 
         public async Task<IActionResult> UploadImage(IFormFile file)
         {
-            User user = HttpContext.Session.GetObject<User>("theUser");
+            User user = HttpContext.Session.GetObject<User>("TheUser");
             //Check if user logged in and its ID is the same as the contact user ID
             if (user != null)
             {
