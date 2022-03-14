@@ -297,5 +297,5 @@ Values(1, 'MY second RECIPE', 'cake recipe you will love it.', 'you need flour e
 
 
 SELECT * FROM Recipe
-SELECT * FROM USERS
+SELECT * FROM Users
 delete Recipe where RecipeID in (3,4)

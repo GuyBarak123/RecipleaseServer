@@ -36,12 +36,22 @@ namespace RecipleaseServer.Controllers
                 Genders = context.Genders.ToList(),
                 Tags = context.Tags.ToList(),
                 Ingridients = context.Ingridients.ToList(),
-              
+
 
             };
 
             return obj;
         }
+
+        [Route("GetRecepies")]
+        [HttpGet]
+        public List<Recipe> GetRecepies()
+        {
+            List<Recipe> list = context.Recipes.ToList();
+
+            return list;
+        }
+
 
         [Route("Login")]
         [HttpGet]
@@ -75,7 +85,7 @@ namespace RecipleaseServer.Controllers
                 Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
                 return user;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
@@ -86,7 +96,7 @@ namespace RecipleaseServer.Controllers
         [HttpGet]
         public List<Recipe> Explore()
         {
-            return context.Recipes.ToList(); 
+            return context.Recipes.ToList();
         }
 
 
@@ -156,4 +166,3 @@ namespace RecipleaseServer.Controllers
         }
     }
 }
-
