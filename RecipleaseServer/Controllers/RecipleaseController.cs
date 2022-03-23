@@ -53,6 +53,15 @@ namespace RecipleaseServer.Controllers
         }
 
 
+        [Route("GetUsers")]
+        [HttpGet]
+        public List<User> GetUsers()
+        {
+            List<User> list = context.Users.ToList();
+
+            return list;
+        }
+
         [Route("Login")]
         [HttpGet]
         public User Login([FromQuery] string email, [FromQuery] string password)
