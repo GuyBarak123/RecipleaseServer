@@ -293,7 +293,8 @@ Values(1, 'MY FIRST RECIPE', 'THIS RECIPE IS VERY EASY TO MAKE YOU WILL ENJOY IT
 INSERT INTO  Recipe (UserID, Title, RecipeDescription, Instructions, TagID)
 Values(1, 'MY second RECIPE', 'cake recipe you will love it.', 'you need flour eggs baking powder sugar', 2)
 
-
+INSERT INTO Users(Name, Password, Email, GenderID, TagID, IsAdmin)
+Values('manager', 'M1234', 'manager@gmail.com',1,2,1 )
 
 
 SELECT * FROM Recipe

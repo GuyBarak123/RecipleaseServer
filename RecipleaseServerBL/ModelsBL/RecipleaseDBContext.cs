@@ -15,6 +15,9 @@ namespace RecipleaseServerBL.Models
         {
             User user = this.Users
                 .Where(u => u.Email == Email && u.Password == Password)
+                .Include(u => u.Gender)
+                .Include(u => u.Tag)
+                .Include(u => u.Likes)
                 .Include(u => u.Recipes)
                 .ThenInclude(r => r.RecipeIngs)
                 .FirstOrDefault();
