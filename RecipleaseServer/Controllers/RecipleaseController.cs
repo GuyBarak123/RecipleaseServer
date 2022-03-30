@@ -53,6 +53,15 @@ namespace RecipleaseServer.Controllers
         }
 
 
+        [Route("GetRecepiesCount")]
+        [HttpGet]
+        public int GetRecepiesCount()
+        {
+            int howmany = context.Recipes.Count();
+
+            return howmany;
+        }
+
         [Route("GetUsers")]
         [HttpGet]
         public List<User> GetUsers()
@@ -172,6 +181,48 @@ namespace RecipleaseServer.Controllers
                 }
             }
             return Forbid();
+        }
+
+
+        [Route("AddToLikedRecipes")]
+        [HttpGet]
+        public bool AddToLikedRecipes([FromQuery] int recipeID)
+        {
+            try
+            {
+                User TheUser;
+                TheUser = HttpContext.Session.GetObject<User>("TheUser");
+
+                if (TheUser != null)
+                {
+                    Saved UserLikedRecipes = new Saved();
+                    UserLikedRecipes.UserId = TheUser.UserId;
+                    UserLikedRecipes.RecipeId = recipeID;
+
+                    try
+                    {
+                        context.Saveds.Remove(UserLikedRecipes);
+                        context.SaveChanges();
+                    }
+                    catch
+                    {
+                        context.Saveds.Add(UserLikedRecipes);
+                        context.SaveChanges();
+                    }
+                    return true;
+                }
+                else
+                {
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                     return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
         }
     }
 }

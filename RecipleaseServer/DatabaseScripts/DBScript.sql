@@ -296,7 +296,16 @@ Values(1, 'MY second RECIPE', 'cake recipe you will love it.', 'you need flour e
 INSERT INTO Users(Name, Password, Email, GenderID, TagID, IsAdmin)
 Values('manager', 'M1234', 'manager@gmail.com',1,2,1 )
 
-
+USE Reciplease
 SELECT * FROM Recipe
 SELECT * FROM Users
-delete Recipe where RecipeID in (3,4)
+USE Reciplease
+delete Users where UserID = 2 OR UserID = 4
+
+USE Reciplease
+INSERT INTO Users(Name, Password, Email, GenderID, TagID, IsAdmin)
+Values('manager', 'M1234', 'manager@gmail.com',1,2, 1 )
+
+USE Reciplease
+INSERT INTO  Recipe (UserID, Title, RecipeDescription, Instructions, TagID)
+Values(1, 'For the graphs', 'trying', 'you need flour eggs baking powder sugar', 2)
