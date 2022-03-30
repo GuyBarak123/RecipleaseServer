@@ -309,3 +309,7 @@ Values('manager', 'M1234', 'manager@gmail.com',1,2, 1 )
 USE Reciplease
 INSERT INTO  Recipe (UserID, Title, RecipeDescription, Instructions, TagID)
 Values(1, 'For the graphs', 'trying', 'you need flour eggs baking powder sugar', 2)
+
+Alter Table Recipe
+ADD Constraint df_createDate default GETDATE() for DateOfUpload
+

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using RecipleaseServerBL.Models;
 using System.IO;
 using RecipleaseServer.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace RecipleaseServer.Controllers
 {
@@ -66,7 +67,7 @@ namespace RecipleaseServer.Controllers
         [HttpGet]
         public List<User> GetUsers()
         {
-            List<User> list = context.Users.ToList();
+            List<User> list = context.Users.Include(u => u.Recipes).ToList();
 
             return list;
         }
