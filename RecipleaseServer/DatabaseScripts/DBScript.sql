@@ -313,3 +313,44 @@ Values(1, 'For the graphs', 'trying', 'you need flour eggs baking powder sugar',
 Alter Table Recipe
 ADD Constraint df_createDate default GETDATE() for DateOfUpload
 
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 1
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 2
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 3
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 4
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 5
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 6
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 7
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 8
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 9
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 10
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 11
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 12
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 13
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 14
+update Recipe set dateofupload = GETDATE() - RAND()*30 where Recipeid = 15
+
+USE Reciplease
+INSERT INTO Users(Name, Password, Email, GenderID, TagID, IsAdmin)
+Values('ido', 'I1234', 'ido@gmail.com',2,2, 1 )
+
+INSERT INTO Users(Name, Password, Email, GenderID, TagID, IsAdmin)
+Values('noa', 'N1234', 'noa@gmail.com',1,2, 1 )
+
+INSERT INTO Users(Name, Password, Email, GenderID, TagID, IsAdmin)
+Values('maya', 'Maya1234', 'maya@gmail.com',3,2, 1 )
+INSERT INTO Users(Name, Password, Email, GenderID, TagID, IsAdmin)
+Values('ofer', 'Ofer1234', 'ofer@gmail.com',3,2, 1 )
+
+Alter Table Users
+ADD SignUpTime DATETIME default (GETDATE()) NOT NULL
+GO
+select * from users
+
+update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 1
+update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 2
+update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 3
+update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 4
+update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 6
+update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 7
+update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 8
+update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 9
