@@ -1,5 +1,5 @@
---CREATE DATABASE Reciplease
---go
+drop DATABASE Reciplease
+go
 
 CREATE DATABASE Reciplease
 go
@@ -344,6 +344,12 @@ Values('ofer', 'Ofer1234', 'ofer@gmail.com',3,2, 1 )
 Alter Table Users
 ADD SignUpTime DATETIME default (GETDATE()) NOT NULL
 GO
+
+Alter Table Comment
+ADD UserId int references Users(UserId) NOT NULL
+GO
+
+
 select * from users
 
 update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 1
@@ -354,3 +360,9 @@ update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 6
 update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 7
 update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 8
 update users set SignUpTime = GETDATE() - RAND()*30 where UserID = 9
+
+select * from Recipe
+select * from Comment
+select * from users
+insert into Comment (Content, RecipeID, UserId)
+VALUES ('Great! Looks good!', 1, 4)

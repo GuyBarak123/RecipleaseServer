@@ -12,6 +12,7 @@ namespace RecipleaseServerBL.Models
     {
         public User()
         {
+            Comments = new HashSet<Comment>();
             Likes = new HashSet<Like>();
             Recipes = new HashSet<Recipe>();
         }
@@ -42,6 +43,8 @@ namespace RecipleaseServerBL.Models
         [ForeignKey(nameof(TagId))]
         [InverseProperty("Users")]
         public virtual Tag Tag { get; set; }
+        [InverseProperty(nameof(Comment.User))]
+        public virtual ICollection<Comment> Comments { get; set; }
         [InverseProperty(nameof(Like.User))]
         public virtual ICollection<Like> Likes { get; set; }
         [InverseProperty(nameof(Recipe.User))]

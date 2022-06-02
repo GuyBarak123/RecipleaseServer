@@ -48,8 +48,7 @@ namespace RecipleaseServer.Controllers
         [HttpGet]
         public List<Recipe> GetRecepies()
         {
-            List<Recipe> list = context.Recipes.ToList();
-
+            List<Recipe> list = context.Recipes.Include(r => r.Comments).ThenInclude(c => c.User).ToList();
             return list;
         }
 
@@ -216,6 +215,45 @@ namespace RecipleaseServer.Controllers
                 {
                     Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
                      return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+        }
+
+        [Route("AddCommentToRecipe")]
+        [HttpPost]
+        public bool AddCommentToRecipe([FromBody] Comment comment)
+        {
+            try
+            {
+                User TheUser;
+                TheUser = HttpContext.Session.GetObject<User>("TheUser");
+
+                if (TheUser != null && TheUser.UserId == comment.UserId)
+                {
+                    
+                    try
+                    {
+                        this.context.Entry(comment).State = EntityState.Added;
+                        this.context.SaveChanges();
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        return false;
+                    }
+                    return true;
+                }
+                else
+                {
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                    return false;
                 }
             }
             catch (Exception e)

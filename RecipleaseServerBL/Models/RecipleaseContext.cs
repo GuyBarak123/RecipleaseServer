@@ -48,6 +48,12 @@ namespace RecipleaseServerBL.Models
                     .WithMany(p => p.Comments)
                     .HasForeignKey(d => d.RecipeId)
                     .HasConstraintName("FK_Comment_RecipeID");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Comment__UserId__44FF419A");
             });
 
             modelBuilder.Entity<Follow>(entity =>
@@ -63,7 +69,7 @@ namespace RecipleaseServerBL.Models
             modelBuilder.Entity<Like>(entity =>
             {
                 entity.HasKey(e => e.LikesId)
-                    .HasName("PK__Likes__C82065D2691751B2");
+                    .HasName("PK__Likes__C82065D23D4DC788");
 
                 entity.HasOne(d => d.Recipe)
                     .WithMany(p => p.Likes)

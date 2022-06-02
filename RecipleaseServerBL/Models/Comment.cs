@@ -19,9 +19,13 @@ namespace RecipleaseServerBL.Models
         public string Content { get; set; }
         [Column("RecipeID")]
         public int? RecipeId { get; set; }
+        public int UserId { get; set; }
 
         [ForeignKey(nameof(RecipeId))]
         [InverseProperty("Comments")]
         public virtual Recipe Recipe { get; set; }
+        [ForeignKey(nameof(UserId))]
+        [InverseProperty("Comments")]
+        public virtual User User { get; set; }
     }
 }
