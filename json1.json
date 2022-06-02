@@ -1,0 +1,117 @@
+{
+  "$id": "1",
+  "userId": 1,
+  "name": "Guy",
+  "password": "G123",
+  "email": "guy@gmail.com",
+  "genderId": 1,
+  "tagId": 2,
+  "isAdmin": false,
+  "signUpTime": "2022-05-25T14:03:22.81",
+  "gender": {
+    "$id": "2",
+    "genderId": 1,
+    "genderName": "Female",
+    "users": {
+      "$id": "3",
+      "$values": [ { "$ref": "1" } ]
+    }
+  },
+  "tag": {
+    "$id": "4",
+    "tagId": 2,
+    "tagName": "Cookies",
+    "recipes": {
+      "$id": "5",
+      "$values": [
+        {
+          "$id": "6",
+          "recipeId": 2,
+          "userId": 1,
+          "title": "MY second RECIPE",
+          "recipeDescription": "cake recipe you will love it.",
+          "instructions": "you need flour eggs baking powder sugar",
+          "tagId": 2,
+          "dateOfUpload": "2022-05-08T02:11:11.36",
+          "tag": { "$ref": "4" },
+          "user": { "$ref": "1" },
+          "comments": {
+            "$id": "7",
+            "$values": []
+          },
+          "likes": {
+            "$id": "8",
+            "$values": []
+          },
+          "recipeIngs": {
+            "$id": "9",
+            "$values": []
+          }
+        },
+        {
+          "$id": "10",
+          "recipeId": 3,
+          "userId": 1,
+          "title": "For the graphs",
+          "recipeDescription": "trying",
+          "instructions": "you need flour eggs baking powder sugar",
+          "tagId": 2,
+          "dateOfUpload": "2022-05-06T21:14:03.34",
+          "tag": { "$ref": "4" },
+          "user": { "$ref": "1" },
+          "comments": {
+            "$id": "11",
+            "$values": []
+          },
+          "likes": {
+            "$id": "12",
+            "$values": []
+          },
+          "recipeIngs": {
+            "$id": "13",
+            "$values": []
+          }
+        }
+      ]
+    },
+    "users": {
+      "$id": "14",
+      "$values": [ { "$ref": "1" } ]
+    }
+  },
+  "likes": {
+    "$id": "15",
+    "$values": []
+  },
+  "recipes": {
+    "$id": "16",
+    "$values": [
+      {
+        "$id": "17",
+        "recipeId": 1,
+        "userId": 1,
+        "title": "MY FIRST RECIPE",
+        "recipeDescription": "THIS RECIPE IS VERY EASY TO MAKE YOU WILL ENJOY IT!.",
+        "instructions": "YOU ILL NEED FLOUR, EGGS, COCA POWDER AND MILK",
+        "tagId": 6,
+        "dateOfUpload": "2022-05-06T02:46:33.877",
+        "tag": null,
+        "user": { "$ref": "1" },
+        "comments": {
+          "$id": "18",
+          "$values": []
+        },
+        "likes": {
+          "$id": "19",
+          "$values": []
+        },
+        "recipeIngs": {
+          "$id": "20",
+          "$values": []
+        }
+      },
+      { "$ref": "6" },
+      { "$ref": "10" }
+    ]
+  }
+}
