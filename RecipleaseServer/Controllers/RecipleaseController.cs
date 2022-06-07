@@ -263,5 +263,35 @@ namespace RecipleaseServer.Controllers
             }
 
         }
+        [Route("Logout")]
+        [HttpPost]
+        public async Task<bool> Logout([FromBody] User user)
+        {
+            try
+            {
+                User realUser = HttpContext.Session.GetObject<User>("TheUser");
+
+                if (realUser != null)
+                {
+                    HttpContext.Session.Remove("TheUser");
+
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+
+                    return true;
+                }
+
+                else
+                {
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.NotFound;
+                    return false;
+                }
+            }
+
+            catch
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.NotFound;
+                return false;
+            }
+        }
     }
 }
